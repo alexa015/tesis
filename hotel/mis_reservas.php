@@ -5,7 +5,7 @@ session_start();
 if (isset($_SESSION['name'])){
 //se muestra el contenido de la página web
 
-$registros = "SELECT * FROM registro order by cod_huesp asc";
+$registros = "SELECT * FROM reservaciones order by id asc";
 
 
 
@@ -85,11 +85,15 @@ $registros = "SELECT * FROM registro order by cod_huesp asc";
         <thead>
         <tr>
           <th scope="row">#</th>
-          <th scope="row" class="text-center">Fecha de Ingreso</th>
+          <th scope="row" class="text-center">Nombre</th>
+          <th scope="row" class="text-center">Apellido</th>
+          <th scope="row" class="text-center">Email</th>
+          <th scope="row" class="text-center">Teléfono</th>
+          <th scope="row" class="text-center">Fecha de Entrada</th>
           <th scope="row" class="text-center">Fecha de Salida</th>
-          <th scope="row" class="text-center">Cantidad de Adultos</th>
-          <th scope="row" class="text-center">Cantidad de Niños</th>
+          <th scope="row" class="text-center">Cantidad de Personas</th>
           <th scope="row" class="text-center">Tipo de Habitación</th>
+          <th scope="row" class="text-center">N° de Habitación</th>
           <th scope="row" class="text-center">Acciones</th>
         </tr>
         </thead>
@@ -111,7 +115,7 @@ $registros = "SELECT * FROM registro order by cod_huesp asc";
                 <div class="form-right">
                     <div class="form-inner-cont">
                         <h3 class="title-small">Comprobar Disponibilidad</h3>
-                        <form action="proceso_actualizar.php?id=<?php echo $row['cod_huesp'];?>" method="post" class="signin-form">
+                        <form action="proceso_actualizar.php?id=<?php echo $row['id'];?>" method="post" class="signin-form">
                             <div class="row book-form">
                                 <div class="form-input col-md-6 col-sm-8 mt-3">
                                     <label>Fecha de Ingreso</label>
@@ -163,20 +167,24 @@ $registros = "SELECT * FROM registro order by cod_huesp asc";
     </div>
 </section>
 </div>
-          <th scope="row"><?php echo $row['cod_huesp'] ?></th>
+          <th scope="row"><?php echo $row['id'] ?></th>
+          <td class="text-center"><?php echo $row['nombre'] ?></td>
+          <td class="text-center"><?php echo $row['apellido'] ?></td>
+          <td class="text-center"><?php echo $row['email'] ?></td>
+          <td class="text-center"><?php echo $row['telefono'] ?></td>
           <td class="text-center"><?php echo $row['fech_ingreso'] ?></td>
           <td class="text-center"><?php echo $row['fech_salida'] ?></td>
-          <td class="text-center"><?php echo $row['cant_adultos'] ?></td>
-          <td class="text-center"><?php echo $row['cant_niños'] ?></td>
+          <td class="text-center"><?php echo $row['cant_personas'] ?></td>
           <td class="text-center"><?php echo $row['tipo_hab'] ?></td>
+          <td class="text-center"><?php echo $row['nro_hab'] ?></td>
           <td>
 
             <ul class="nav justify-content-center" style="color: #fff">
                   <li class="nav-item">
-                    <a href="id=<?php echo $row['cod_huesp'];?>" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalLRForm"><span class="fa fa-pencil"></span></a>
+                    <a href="id=<?php echo $row['id'];?>" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalLRForm"><span class="fa fa-pencil"></span></a>
                   </li>
                   <li class="nav-item">
-                    <a href="baja_reservas.php?id=<?php echo $row['cod_huesp'];?>" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span></a>
+                    <a href="baja_reservas.php?id=<?php echo $row['id'];?>" class="btn btn-sm btn-danger"><span class="fa fa-trash"></span></a>
                   </li>
             </ul>
           </td>

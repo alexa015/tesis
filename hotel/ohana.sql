@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 20, 2020 at 06:13 PM
+-- Generation Time: Nov 20, 2020 at 10:59 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `habitaciones` (
   `estado` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tipo_hab` (`tipo_hab`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `habitaciones`
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `reservaciones` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` text NOT NULL,
   `apellido` text NOT NULL,
-  `email` text NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `telefono` int NOT NULL,
   `fech_ingreso` date NOT NULL,
   `fech_salida` date NOT NULL,
@@ -77,7 +77,14 @@ CREATE TABLE IF NOT EXISTS `reservaciones` (
   `nro_hab` int NOT NULL,
   `cant_dias` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `reservaciones`
+--
+
+INSERT INTO `reservaciones` (`id`, `nombre`, `apellido`, `email`, `telefono`, `fech_ingreso`, `fech_salida`, `cant_personas`, `tipo_hab`, `nro_hab`, `cant_dias`) VALUES
+(45, 'Alexa', 'Barrios', 'alexabarrios015@gmail.com', 2147483647, '2020-11-26', '2020-11-27', 0, 'Familiar', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -90,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `tipo_hab` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tipo_hab`
