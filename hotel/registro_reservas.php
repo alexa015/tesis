@@ -17,18 +17,20 @@ $check="SELECT * FROM reservaciones WHERE email = '$email'";
 $rs = mysqli_query($conexion,$check);
 $data = mysqli_fetch_array($rs, MYSQLI_NUM);
 
-//var_dump($nombre) or die();
+//var_dump($newUser) or die();
 
 if($data[0] > 1) {
-	echo "<script type='text/javascript'> alert('El usuario ya existe')</script>";
+	echo "<script>alert('El usuario ya existe');
+		window.location='/tesis/hotel/buscar_reservas.php'</script>";
 } else {
-	$newUser="INSERT INTO `reservaciones` (`nombre`, `apellido`, `email`, `telefono`, `fech_ingreso`, `fech_salida`, `cant_personas`, `tipo_hab`, `nro_hab`, `cant_dias`) VALUES ('$nombre','$apellido','email','$telefono','$fech_ingreso','$fech_salida','$cant_personas','$tipo_hab','$nro_hab','$cant_dias'))";
+	$newUser="INSERT INTO reservaciones (nombre, apellido, email, telefono, fech_ingreso, fech_salida, cant_personas, tipo_hab, nro_hab, cant_dias) VALUES ('$nombre','$apellido','$email','$telefono','$fech_ingreso','$fech_salida','$cant_personas','$tipo_hab','$nro_hab','$cant_dias')";
 	if (mysqli_query($conexion,$newUser)) {
-		echo "<script type='text/javascript'> alert('Su solicitud de reserva ha sido enviada')</script>";
+		echo "<script>alert('Error');
+		window.location='/tesis/hotel/mis_reservas.php'</script>";
 											
 	}else {
 		echo "<script>alert('Error');
-		window.location='/hotel/buscar_reservas.php'</script>";
+		window.location='/tesis/hotel/buscar_reservas.php'</script>";
 	}
 }			
 
