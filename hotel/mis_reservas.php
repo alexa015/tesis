@@ -77,11 +77,9 @@ $registros = "SELECT * FROM reservaciones order by id asc";
 </section>
 
 
-<div class="container">
-    <div class="row">        
-        <div class="col-md-12">
-            <div class="table-responsive">
-                 <table class="table table-hover">
+
+<div class="table">
+    <table class="table table-hover">
         <thead>
         <tr>
           <th scope="row">#</th>
@@ -89,8 +87,8 @@ $registros = "SELECT * FROM reservaciones order by id asc";
           <th scope="row" class="text-center">Apellido</th>
           <th scope="row" class="text-center">Email</th>
           <th scope="row" class="text-center">Teléfono</th>
-          <th scope="row" class="text-center">Fecha de Entrada</th>
-          <th scope="row" class="text-center">Fecha de Salida</th>
+          <th scope="row" class="text-center">Entrada</th>
+          <th scope="row" class="text-center">Salida</th>
           <th scope="row" class="text-center">Cantidad de Personas</th>
           <th scope="row" class="text-center">Tipo de Habitación</th>
           <th scope="row" class="text-center">N° de Habitación</th>

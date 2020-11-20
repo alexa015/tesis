@@ -24,7 +24,7 @@ if (empty($_SESSION) and isset($_POST['datos_introducidos_email']) and isset($_P
         if ($verificar_contraseña){
             //se asigna la sesión y redirecciona
             $_SESSION['name']=$contraseña_guardada['nombre'];
-            header ('location: home.php');
+            header ('location: /tesis/hotel/home.php');
         }//si la contraseña es incorrecta
         else{
             header ('location: ./');
