@@ -5,33 +5,34 @@ session_start();
 if (isset($_SESSION['name'])){
 //se muestra el contenido de la página web
 
-$nombre = $_POST['registrar_nombre'];
-$apellido = $_POST['registrar_apellido'];
-$email = $_POST['registrar_email'];
-$telefono = $_POST['registrar_telefono'];
-$fech_ingreso = $_POST['registrar_fech_ingreso'];
-$fech_salida = $_POST['registrar_fech_salida'];
-$cant_personas = $_POST['registrar_cant_personas'];
-$tipo_hab = $_POST['registrar_tipo_hab'];
-$nro_hab = $_POST['registrar_nro_hab'];
-
-$check="SELECT * FROM reservaciones WHERE email = '$email'";
-$rs = mysqli_query($conexion,$check);
-$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-
-//var_dump($nombre) or die();
-
-if($data[0] > 1) {
-	echo "<script type='text/javascript'> alert('El usuario ya existe')</script>";
-} else {
-	$newUser="INSERT INTO `reservaciones` (`nombre`, `apellido`, `email`, `telefono`, `fech_ingreso`, `fech_salida`, `cant_personas`, `tipo_hab`, `nro_hab`, `cant_dias`) VALUES ('$nombre','$apellido','email','$telefono','$fech_ingreso','$fech_salida','$cant_personas','$tipo_hab','$nro_hab','$cant_dias'))";
-	if (mysqli_query($conexion,$newUser)) {
-		echo "<script type='text/javascript'> alert('Su solicitud de reserva ha sido enviada')</script>";
-											
-	}else {
-		echo "<script type='text/javascript'> alert('Error al agregar usuario en la base de datos')</script>";
-	}
-}										
+//$nombre = (isset($_POST['registrar_nombre']));
+//$apellido = (isset($_POST['registrar_apellido']));
+//$email = (isset($_POST['registrar_email']));
+//$telefono = (isset($_POST['registrar_telefono']));
+//$fech_ingreso = (isset($_POST['registrar_fech_ingreso']));
+//$fech_salida = (isset($_POST['registrar_fech_salida']));
+//$cant_personas = (isset($_POST['registrar_cant_personas']));
+//$tipo_hab = (isset($_POST['registrar_tipo_hab']));
+//$nro_hab = (isset($_POST['registrar_nro_hab']));
+//$cant_dias = (isset($_POST['registrar_cant_dias']));
+//
+//$check="SELECT * FROM reservaciones WHERE email = '$email'";
+//$rs = mysqli_query($conexion,$check);
+//$data = mysqli_fetch_array($rs, MYSQLI_NUM);
+//
+////var_dump($nombre) or die();
+//
+//if($data[0] > 1) {
+//	echo "<script type='text/javascript'> alert('El usuario ya existe')</script>";
+//} else {
+//	$newUser="INSERT INTO `reservaciones` (`nombre`, `apellido`, `email`, `telefono`, `fech_ingreso`, `//fech_salida`, `cant_personas`, `tipo_hab`, `nro_hab`, `cant_dias`) VALUES ('$nombre','$apellido//','email','$telefono','$fech_ingreso','$fech_salida','$cant_personas','$tipo_hab','$nro_hab','$//cant_dias'))";
+//	if (mysqli_query($conexion,$newUser)) {
+//		echo "<script type='text/javascript'> alert('Su solicitud de reserva ha sido enviada')</script>//";
+//											
+//	}else {
+//		echo "<script type='text/javascript'> alert('Error al agregar usuario en la base de //datos')</script>";
+//	}
+//}										
 
 ?>
 
@@ -113,6 +114,7 @@ if($data[0] > 1) {
 
 
 <section class="w3l-availability-form  py-5 text-center">
+	<form action="registro_reservas.php" method="post">
     <div class="contacts-9 py-lg-5 py-sm-4 form-right">
         <div class="container">
             <div class="d-grid contact-view">
@@ -123,7 +125,7 @@ if($data[0] > 1) {
                     <h3 class="title-big">Información de Reserva</h3>
                 </div> 
                 <div class="map-content-9 mt-lg-0 mt-4 ">
-                    <form action="buscar_reservas.php" method="post">
+                    <form action="registro_reservas.php" method="post">
                         <div class="twice-two">
                             <input type="text" class="form-control" name="registrar_nombre" id="w3lName" placeholder="Nombre"
                                 required="">
@@ -139,7 +141,7 @@ if($data[0] > 1) {
                                 placeholder="Email" required="">
                         </div>
                     
-                </div>
+                		</div>
                    
                             <div class="row book-form justify-content-center">
                             	<div class="form-input col-md-5 col-sm-6 mt-3">
@@ -173,7 +175,7 @@ if($data[0] > 1) {
                                     <input type="date" name="registrar_fech_salida" placeholder="Date" required="">
                                 </div>
                             </div>
-                        </form>
+                    
                 </div>
                 <div class="bottom-btn col-md-5 col-sm-6 mt-5 justify-content-center">
                     <button type="submit" class="btn btn-style btn-primary w-100 px-2">RESERVA AHORA
@@ -182,6 +184,7 @@ if($data[0] > 1) {
             </div>
         </div>
     </div>
+    </form>
 </section>
 
 
